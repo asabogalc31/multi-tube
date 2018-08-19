@@ -25,7 +25,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#)-(aywkxlk(_k@f6dkrlue+c%bg0v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'multi-tube.herokuapp.com'
+]
 
 
 # Application definition
