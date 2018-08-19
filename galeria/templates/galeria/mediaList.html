@@ -1,0 +1,15 @@
+{% extends 'galeria/layout.html' %}
+
+{% block content %}
+<h1>Galery</h1>
+<div class="mediaList">
+  {% for item in media %}
+    <div class="mediaItem">
+      <h3 class="title">{{item.title}}</h3>
+      <video width="320" height="180">
+        <source ="{{item.url}}" />
+      </video>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
