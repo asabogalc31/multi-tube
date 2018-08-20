@@ -1,14 +1,26 @@
 {% extends 'galeria/layout.html' %}
 
 {% block content %}
-<h1>Galery</h1>
+<div class="galeryTitle">
+  <h1>Galery</h1>
+</div>
 <div class="mediaList">
   {% for item in media %}
     <div class="mediaItem">
-      <h3 class="title">{{item.title}}</h3>
-      <iframe width="320" height="180" frameborder="0" 
-      src="{{item.url}}">
+      <iframe width="100%" height="100%" frameborder="0" allowfullscreen="True" src="{{item.url}}">
       </iframe>
+      <h3 class="title">{{item.title}}</h3>
+      <div class="itemDetail">
+        <div><b>Author:</b> {{item.author}}</div>
+        <div><b>Date:</b> {{item.date}}</div>
+        <div><b>City:</b> {{item.city}}</div>
+        <div><b>Country:</b> {{item.country}}</div>
+        <div><b>Category:</b> {{item.category}}</div>
+        <div><b>Type:</b> {{item.get_type_display}}</div>
+      </div>
+      <button type="button" name="seeClips">
+        <h3>Details</h3>
+      </button>
     </div>
   {% endfor %}
 </div>
