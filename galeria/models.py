@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from datetime import datetime
 
 # Create your models here.
@@ -25,6 +26,9 @@ class Media(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("media-detail", kwargs={"id": self.id})
+
 class User(models.Model):
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
@@ -33,6 +37,8 @@ class User(models.Model):
     photo = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     country = models.CharField(max_length=200)
+    def __str__(self):
+        return self.first_names + ' ' + self.last_names
 
 class Clip(models.Model):
     name = models.CharField(max_length=200)
@@ -40,3 +46,5 @@ class Clip(models.Model):
     end = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     media = models.ForeignKey(Media, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name

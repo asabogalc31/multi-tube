@@ -4,126 +4,39 @@ $mainFont: #3e3e3e;
 $ligthFont: #e5e5e5;
 $mainButton: #3891A6;
 
-@import 'reset';
-@import 'fonts';
-@import 'prefix';
+@import '_reset';
+@import '_fonts';
+@import '_prefix';
 
-
-header
-{
-  background-color: $darkColor;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 8vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  @include align(center);
-  padding: 2vw;
-  font-size: 2vh;
-  z-index: 10;
-  h1 {
-    color: $ligthFont;
-  }
-  button
-  {
-    position: absolute;
-    right: 4vh;
-    width: 8vh;
-    height: 4vh;
-    border: solid $ligthFont 1px;
-    background-color: transparent;
-    font-size: 1.5vh;
-    h2 {
-      color: $ligthFont;
-    }
-  }
-}
+@import 'header';
+@import 'galeryList';
+@import 'mediaDetail';
 
 .container
 {
-  padding: 7.5vh 1vw 1vh 1vw;
+  width: 100vw;
+  height: auto;
 }
 
-.galeryTitle
+.PageTitle
 {
   position: relative;
-  top: 2vh;
+  top: 9.5vh;
   left: 2vw;
-  width: 12vh;
   color: $darkColor;
   background-color: $bgColor;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: inline-block;
   @include align(center);
   h1
   {
-    margin: auto;
+    margin: 0vw 1vw;
   }
 }
 
-
-.mediaList
+.PageBorder
 {
-  width: 100%;
-  height: 100%;
-  display: grid;
+  width: 97vw;
   border: solid $darkColor 2px;
-  padding: 3vh 1vh;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1vh;
-}
-
-@media only screen and (max-width: 1000px) {
-  /* Tablet */
-  .mediaList
-  {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  /* Mobile */
-  .mediaList
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-.mediaItem
-{
-  border: solid darken($bgColor, 20%) 1px;
-  background-color: darken($bgColor, 10%);
-  width: 100%;
-  height: 40vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 4fr 0.3fr 1fr 1fr;
-  grid-gap: 0.5vw;
-  z-index: 5;
-  h3
-  {
-    margin: auto;
-    -ms-flex-item-align: center;
-        align-self: center;
-    text-align: center;
-    font-size: 4vh;
-  }
-  .itemDetail
-  {
-    padding: 0vw 0.5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 1fr 1fr 1fr;
-    font-size: 1.6vh;
-  }
-  button
-  {
-    background-color: $mainButton;
-    border: dashed lighten($mainButton, 10%) 2px;
-    color: $bgColor;
-    font-size: 2vh;
-  }
+  margin: 7.5vh 1vw 1vh 1vw;
+  padding: 3vh 1vw;
 }

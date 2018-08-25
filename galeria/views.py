@@ -11,11 +11,13 @@ def index(request):
     }
     return render(request, 'galeria/mediaList.html', context)
 
-def detail(request):
+def detail(request, id):
 
-    media = None
+    media = Media.objects.get(id=id)
+    clips = Clip.objects.filter(media=media.id)
 
     context = {
-        'media': media
+        'item': media,
+        'clips': clips
     }
     return render(request, 'galeria/mediaDetail.html', context)

@@ -1,5 +1,43 @@
 {% extends 'root.html' %}
-
+{% load static %}
 {% block content %}
+<button type="button" class="BackButton"
+onclick="location.href = '/'">
+  <img src="{% static '/img/back.svg' %}" alt="Exit button">
+</button>
+<div class="galeryTitle PageTitle">
+  <h1>{{item.title}}</h1>
+</div>
+<div class="MediaDetail PageBorder">
+  <div class="MediaItem">
+    <iframe width="100%" height="100%" frameborder="0" allowfullscreen="True" src="{{item.url}}">
+    </iframe>
+    <div class="itemDetail">
+      <div><b>Author:</b> {{item.author}}</div>
+      <div><b>Date:</b> {{item.date}}</div>
+      <div><b>City:</b> {{item.city}}</div>
+      <div><b>Country:</b> {{item.country}}</div>
+      <div><b>Category:</b> {{item.category}}</div>
+      <div><b>Type:</b> {{item.get_type_display}}</div>
+    </div>
+  </div>
+  <div class="MediaClips">
+    <div class="ClipList">
+      <h3>Recomended Clips</h3>
+      {% for clip in clips %}
+      <div class="Clip">
+        <h4>{{clip.name}}</h4>
+        <button type="button" class="PlayButton">
+          <img src="{% static 'img/play.svg' %}" alt="Play button for clip">
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% if request.user.is_authenticated == True %}
+      <div class="CreateClip">
 
+      </div>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}

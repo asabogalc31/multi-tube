@@ -1,0 +1,61 @@
+header
+{
+  background-color: $darkColor;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 8vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  @include align(center);
+  padding: 2vw;
+  font-size: 2vh;
+  z-index: 10;
+  h1 {
+    color: $ligthFont;
+  }
+
+  button
+  {
+    width: 8vh;
+    height: 4vh;
+    border: solid $ligthFont 1px;
+  }
+
+  .DarkButton
+  {
+    background-color: transparent;
+    font-size: 1.5vh;
+    h2 {
+      color: $ligthFont;
+    }
+  }
+
+  .LigthButton
+  {
+    background-color: $ligthFont;
+    font-size: 1.5vh;
+    h2 {
+      color: $darkColor;
+    }
+  }
+
+  .LogButtons
+  {
+    position: absolute;
+    right: 4vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1vw;
+  }
+
+  .UserInfo
+  {
+    position: absolute;
+    right: 4vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1vw;
+  }
+}
