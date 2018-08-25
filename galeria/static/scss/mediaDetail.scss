@@ -1,12 +1,16 @@
 .BackButton
 {
-  width: 3vw;
-  height: 3vh;
+  width: 2.5vw;
+  height: 2.5vh;
   position: relative;
-  top: 9vh;
+  top: 7.5vh;
   left: 1vw;
   background-color: transparent;
   border: None;
+  img
+  {
+    height: 100%;
+  }
 }
 
 .MediaDetail
@@ -16,12 +20,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  grid-gap: 1vw;
   @media only screen and (max-width: 800px) {
     /* Mobile */
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-gap: 3vh;
   }
-  grid-gap: 0.5vw;
   z-index: 5;
 }
 
