@@ -1,4 +1,4 @@
 .idea/
 __pycache__/
 start.sh
-.env
+.env*
