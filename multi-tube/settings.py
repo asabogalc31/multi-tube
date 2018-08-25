@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,3 +134,10 @@ STATICFILES_DIRS = [
 ]
 
 django_heroku.settings(locals())
+
+
+# Auth redirects
+
+LOGIN_REDIRECT_URL = 'media-list'
+
+LOGOUT_REDIRECT_URL = 'media-list'

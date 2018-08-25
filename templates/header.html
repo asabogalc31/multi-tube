@@ -1,24 +1,24 @@
 <header>
   <h1>Media-Tube</h1>
-  {% if request.user.is_authenticated == False %}
+  {% if request.user.is_authenticated %}
     <div class="LogButtons">
-      <button type="button" class="Signup LigthButton">
+      <a type="button" class="Signup LigthButton" href="{% url 'signup' %}">
         <h2>Sign Up</h2>
-      </button>
-      <button type="button" class="Login DarkButton">
+      </a>
+      <a type="button" class="Login DarkButton" href="{% url 'login' %}">
         <h2>Log In</h2>
-      </button>
+      </a>
     </div>
   {% endif %}
-  {% if request.user.is_authenticated == True %}
+  {% if not request.user.is_authenticated %}
     <div class="UserInfo">
       <img src="{{ request.user.image }}" alt="{{ user.name }}'s image">
       <button type="button" class="Profile LigthButton">
         <h2>Profile</h2>
       </button>
-      <button type="button" class="Logout DarkButton">
+      <a type="button" class="Logout DarkButton" href="{% url 'media-list' %}">
         <h2>Logout</h2>
-      </button>
+      </a>
     </div>
   {% endif %}
 </header>
