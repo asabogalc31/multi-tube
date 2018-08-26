@@ -141,3 +141,7 @@ django_heroku.settings(locals())
 LOGIN_REDIRECT_URL = 'media-list'
 
 LOGOUT_REDIRECT_URL = 'media-list'
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
