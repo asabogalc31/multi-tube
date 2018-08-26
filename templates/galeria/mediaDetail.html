@@ -37,7 +37,7 @@
         <h3>Create a Clip</h3>
         <form method="POST"> {% csrf_token %}
           {{ form.as_p }}
-          <input type="submit" value='Save'>
+          <p><input type="submit" class="btn btn-primary btn-block" value="Create"></p>
         </form>
       </div>
     {% endif %}

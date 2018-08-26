@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import Media, Clip
-from .forms import ClipForm, RawClipForm
+from .forms import ClipForm
 
 # Create your views here.
 def index(request):
@@ -14,13 +14,14 @@ def index(request):
     return render(request, 'galeria/mediaList.html', context)
 
 def detail(request, id):
-    form = RawClipForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = ClipForm()
-
     media = Media.objects.get(id=id)
     clips = Clip.objects.filter(media=media.id)
+
+    form = ClipForm(request.POST or None)
+    if form.is_valid():
+        Clip.objects.create(**form.cleaned_data, media=media, user=request.user)
+        form = ClipForm()
+
 
     context = {
         'item': media,
