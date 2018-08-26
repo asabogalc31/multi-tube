@@ -1,3 +1,4 @@
+{% load static %}
 <header>
   <h1>Media-Tube</h1>
   {% if not request.user.is_authenticated %}
@@ -11,8 +12,12 @@
     </div>
   {% else %}
     <div class="UserInfo">
-      <img src="{{ request.user.photo.url }}" alt="{{ user.name }}'s image">
-      <button type="button" class="Profile LigthButton" onclick="location.href = '{% url 'profile' %}'">
+    {% if request.user.profile.photo %}
+      <img src="{{ request.user.profile.photo.url }}" alt="{{ user.name }}'s image"  class="img-fluid avatar">
+    {% else %}
+         <img src="{% static 'registration/img/no-photo.jpg' %}" class="img-fluid avatar">
+    {% endif %}
+      <button type="button" class="Profile LigthButton " onclick="location.href = '{% url 'profile' %}'">
         <h2>Profile</h2>
       </button>
       <button type="button" class="Logout DarkButton" onclick="location.href = '{% url 'logout' %}'" >
