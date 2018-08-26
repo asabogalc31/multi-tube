@@ -31,6 +31,7 @@
     margin: auto;
     @include align(center);
     font-size: 4vh;
+    font-weight: 600;
   }
   .itemDetail
   {
@@ -48,6 +49,7 @@
     font-size: 2vh;
     &:hover
     {
+      -webkit-transition: 200ms;
       transition: 200ms;
       background-color: lighten($mainButton, 10%);
     }

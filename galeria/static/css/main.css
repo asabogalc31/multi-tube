@@ -18,11 +18,11 @@ button {
 }
 
 h1 {
-  font-family: "Pacifico", cursive;
+  font-family: "Pacifico", cursive !important;
 }
 
 h2, h3 {
-  font-family: "Amatic SC", cursive;
+  font-family: "Amatic SC", cursive !important;
 }
 
 h1, h2, h3, h4, h5, p, ul, div {
@@ -46,6 +46,7 @@ header h1 {
 }
 header button {
   height: 4.5vh;
+  -ms-flex-item-align: center;
   align-self: center;
   border: solid #e5e5e5 1px;
 }
@@ -88,6 +89,7 @@ header .UserInfo img {
   padding: 0.5vh;
   max-width: 100%;
   height: auto;
+  -ms-flex-item-align: center;
   align-self: center;
   border-radius: 50%;
 }
@@ -127,6 +129,7 @@ header .UserInfo img {
   -ms-flex-align: center;
   align-items: center;
   font-size: 4vh;
+  font-weight: 600;
 }
 .MediaListItem .itemDetail {
   padding: 0vw 0.5vw;
@@ -142,6 +145,7 @@ header .UserInfo img {
   font-size: 2vh;
 }
 .MediaListItem button:hover {
+  -webkit-transition: 200ms;
   transition: 200ms;
   background-color: #4eadc3;
 }
