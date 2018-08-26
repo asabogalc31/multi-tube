@@ -4,29 +4,35 @@ header
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 8vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  @include align(center);
+  height: 10vh;
   padding: 2vw;
-  font-size: 2vh;
   z-index: 10;
   h1 {
+    margin: 0;
+    line-height: 100%;
+    font-size: 2rem;
     color: $ligthFont;
   }
 
   button
   {
-    width: 8vh;
-    height: 4vh;
+    height: 4.5vh;
+    align-self: center;
     border: solid $ligthFont 1px;
+    h2
+    {
+      display: inline-block;
+      margin: 0;
+      line-height: 100%;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0vh 1vw;
+    }
   }
 
   .DarkButton
   {
     background-color: transparent;
-    font-size: 1.5vh;
     h2 {
       color: $ligthFont;
     }
@@ -35,27 +41,37 @@ header
   .LigthButton
   {
     background-color: $ligthFont;
-    font-size: 1.5vh;
     h2 {
       color: $darkColor;
     }
   }
 
-  .LogButtons
+  .HeaderOptions
   {
     position: absolute;
     right: 4vh;
+    top: 0;
+    height: 10vh;
+    width: 20vw;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-gap: 1vw;
+  }
+
+  .LogButtons
+  {
+    grid-template-columns: 1fr 1fr;
   }
 
   .UserInfo
   {
-    position: absolute;
-    right: 4vh;
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1vw;
+    img
+    {
+      padding: 0.5vh;
+      max-width: 100%;
+      height: auto;
+      align-self: center;
+      border-radius: 50%;
+    }
   }
 }

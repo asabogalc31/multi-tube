@@ -21,7 +21,7 @@ $mainButton: #3891A6;
 .PageTitle
 {
   position: relative;
-  top: 9.5vh;
+  top: 10vh;
   left: 2vw;
   color: $darkColor;
   background-color: $bgColor;
@@ -39,4 +39,12 @@ $mainButton: #3891A6;
   border: solid $darkColor 2px;
   margin: 7.5vh 1vw 1vh 1vw;
   padding: 3vh 1vw;
+}
+
+.LinkButton
+{
+  background-color: transparent;
+  border: None;
+  cursor: pointer;
+  height: 100%;
 }

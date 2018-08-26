@@ -34,52 +34,62 @@ header {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 8vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  height: 10vh;
   padding: 2vw;
-  font-size: 2vh;
   z-index: 10;
 }
 header h1 {
+  margin: 0;
+  line-height: 100%;
+  font-size: 2rem;
   color: #e5e5e5;
 }
 header button {
-  width: 8vh;
-  height: 4vh;
+  height: 4.5vh;
+  align-self: center;
   border: solid #e5e5e5 1px;
+}
+header button h2 {
+  display: inline-block;
+  margin: 0;
+  line-height: 100%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0vh 1vw;
 }
 header .DarkButton {
   background-color: transparent;
-  font-size: 1.5vh;
 }
 header .DarkButton h2 {
   color: #e5e5e5;
 }
 header .LigthButton {
   background-color: #e5e5e5;
-  font-size: 1.5vh;
 }
 header .LigthButton h2 {
   color: #3e3e3e;
 }
-header .LogButtons {
+header .HeaderOptions {
   position: absolute;
   right: 4vh;
+  top: 0;
+  height: 10vh;
+  width: 20vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 1vw;
 }
+header .LogButtons {
+  grid-template-columns: 1fr 1fr;
+}
 header .UserInfo {
-  position: absolute;
-  right: 4vh;
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1vw;
+}
+header .UserInfo img {
+  padding: 0.5vh;
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+  border-radius: 50%;
 }
 
 .mediaList {
@@ -136,19 +146,6 @@ header .UserInfo {
   background-color: #4eadc3;
 }
 
-.BackButton {
-  width: 2.5vw;
-  height: 2.5vh;
-  position: relative;
-  top: 7.5vh;
-  left: 1vw;
-  background-color: transparent;
-  border: None;
-}
-.BackButton img {
-  height: 100%;
-}
-
 .MediaDetail {
   width: 100%;
   height: auto;
@@ -197,7 +194,7 @@ header .UserInfo {
   position: relative;
   top: -3vh;
 }
-.MediaClips .ClipList {
+.MediaClips .DetailWindow {
   border: solid #3e3e3e 2px;
   padding: 1vh;
   display: grid;
@@ -206,11 +203,12 @@ header .UserInfo {
 }
 .MediaClips .ClipList .Clip {
   background-color: #e6e6e6;
+  border: dashed #cccccc 2px;
   display: grid;
   grid-template-columns: 9fr 1fr;
 }
-.MediaClips .ClipList .Clip h4 {
-  line-height: 100%;
+.MediaClips .ClipList .Clip h4, .MediaClips .ClipList .Clip p {
+  margin: 0;
   width: 100%;
   text-align: center;
   align-self: center;
@@ -222,17 +220,20 @@ header .UserInfo {
 }
 .MediaClips .ClipList .Clip .PlayButton img {
   height: 100%;
-  padding: 0.5vh;
+  padding: 0.5vw;
+}
+.MediaClips .CreateClip {
+  margin-top: 3vh;
 }
 
-.container1 {
+.Page {
   width: 100vw;
   height: auto;
 }
 
 .PageTitle {
   position: relative;
-  top: 9.5vh;
+  top: 10vh;
   left: 2vw;
   color: #3e3e3e;
   background-color: #FFF;
@@ -252,13 +253,11 @@ header .UserInfo {
   padding: 3vh 1vw;
 }
 
-.avatar {
-    width: 50px;
-    height:50px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: 3px;
-    margin-right: 2px;
+.LinkButton {
+  background-color: transparent;
+  border: None;
+  cursor: pointer;
+  height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

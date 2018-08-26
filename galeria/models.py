@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -28,17 +29,6 @@ class Media(models.Model):
 
     def get_absolute_url(self):
         return reverse("media-detail", kwargs={"id": self.id})
-
-class User(models.Model):
-    email = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
-    first_names = models.CharField(max_length=200)
-    last_names = models.CharField(max_length=200)
-    photo = models.CharField(max_length=200)
-    city = models.CharField(max_length=200)
-    country = models.CharField(max_length=200)
-    def __str__(self):
-        return self.first_names + ' ' + self.last_names
 
 class Clip(models.Model):
     name = models.CharField(max_length=200)

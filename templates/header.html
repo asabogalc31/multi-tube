@@ -1,13 +1,10 @@
 {% load static %}
 <header>
-  <h1>Media-Tube</h1>
-    <div class="ml-5">
-        <button type="button" class="Videos DarkButton" onclick="location.href = '{% url 'media-list' %}'" >
-        <h2>Videos</h2>
-      </button>
-    </div>
+  <button class="HeaderTitle LinkButton" onclick="location.href = '{% url 'media-list' %}'">
+    <h1>Media-Tube</h1>
+  </button>
   {% if not request.user.is_authenticated %}
-    <div class="LogButtons">
+    <div class="LogButtons HeaderOptions">
       <button type="button" class="Signup LigthButton" onclick="location.href = '{% url 'signup' %}'" >
         <h2>Sign Up</h2>
       </button>
@@ -16,11 +13,11 @@
       </button>
     </div>
   {% else %}
-    <div class="UserInfo">
+    <div class="UserInfo HeaderOptions">
     {% if request.user.profile.photo %}
-      <img src="{{ request.user.profile.photo.url }}" alt="{{ user.name }}'s image"  class="img-fluid avatar">
+      <img src="{{ request.user.profile.photo.url }}" alt="{{ user.name }}'s image">
     {% else %}
-         <img src="{% static 'registration/img/no-photo.jpg' %}" class="img-fluid avatar">
+         <img src="{% static 'registration/img/no-photo.jpg' %}">
     {% endif %}
       <button type="button" class="Profile LigthButton " onclick="location.href = '{% url 'profile' %}'">
         <h2>Profile</h2>

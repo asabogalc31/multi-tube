@@ -1,10 +1,6 @@
 {% extends 'root.html' %}
 {% load static %}
 {% block content %}
-<button type="button" class="BackButton"
-onclick="location.href = '/'">
-  <img src="{% static '/img/back.svg' %}" alt="Exit button">
-</button>
 <div class="galeryTitle PageTitle">
   <h1>{{item.title}}</h1>
 </div>
@@ -22,20 +18,27 @@ onclick="location.href = '/'">
     </div>
   </div>
   <div class="MediaClips">
-    <div class="ClipList">
+    <div class="ClipList DetailWindow">
       <h3>Recomended Clips</h3>
       {% for clip in clips %}
       <div class="Clip">
-        <h4>{{clip.name}}</h4>
-        <button type="button" class="PlayButton">
+        <div class="clipTitle">
+          <h4>{{clip.name}}</h4>
+          <p>Created by {{clip.user.username}}</p>
+        </div>
+        <button type="button" class="PlayButton LinkButton">
           <img src="{% static 'img/play.svg' %}" alt="Play button for clip">
         </button>
       </div>
       {% endfor %}
     </div>
     {% if request.user.is_authenticated == True %}
-      <div class="CreateClip">
-
+      <div class="CreateClip DetailWindow">
+        <h3>Create a Clip</h3>
+        <form method="POST"> {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value='Save'>
+        </form>
       </div>
     {% endif %}
   </div>
