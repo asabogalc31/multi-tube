@@ -1,6 +1,11 @@
 {% load static %}
 <header>
   <h1>Media-Tube</h1>
+    <div class="ml-5">
+        <button type="button" class="Videos DarkButton" onclick="location.href = '{% url 'media-list' %}'" >
+        <h2>Videos</h2>
+      </button>
+    </div>
   {% if not request.user.is_authenticated %}
     <div class="LogButtons">
       <button type="button" class="Signup LigthButton" onclick="location.href = '{% url 'signup' %}'" >
