@@ -1,5 +1,43 @@
+.searchBar
+{
+  margin: 13vh 0vw 0vh 2vw;
+  width: 100%;
+  h3
+  {
+    font-weight: 600;
+  }
+  form
+  {
+    display: inline-grid;
+    width: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 2vw;
+    div
+    {
+      display: flex;
+      align-items: center;
+      label
+      {
+        margin: 0 1vw 0 0;
+      }
+    }
+    input
+    {
+      background-color: lighten($mainButton, 10%);
+      border: dashed $mainButton 2px;
+    }
+  }
+}
+
+.galeryTitle
+{
+  top: 2vh !important;
+}
+
 .mediaList
 {
+  margin: 0.5vh 1vw 1vh 1vw !important;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1vh;
@@ -12,8 +50,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-
 
 .MediaListItem
 {

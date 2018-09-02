@@ -1,6 +1,29 @@
 {% extends 'root.html' %}
 
 {% block content %}
+<div class="searchBar">
+  <h3>Search</h3>
+  <form action="{% url 'media-search' %}" method="get">
+    <div>
+      <label for="mediaType">Type:</label>
+      <select name="mediaType">
+        <option value="B" {% if searchParams.type == 'B' %} selected {% endif %}>Audio/Video</option>
+        <option value="A" {% if searchParams.type == 'A' %} selected {% endif %}>Audio</option>
+        <option value="V" {% if searchParams.type == 'V' %} selected {% endif %}>Video</option>
+      </select>
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select name="category">
+        <option value="" {% if searchParams.category == '' %} selected {% endif %}>All</option>
+        {% for cat in categories %}
+        <option value="{{cat.id}}" {% if searchParams.category == cat.id %} selected {% endif %}>{{cat.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <input type="submit" class="btn btn-primary btn-block" value="Search ">
+  </form>
+</div>
 <div class="galeryTitle PageTitle">
   <h1>Gallery</h1>
 </div>
