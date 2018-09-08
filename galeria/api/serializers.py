@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from galeria.models import Category, Media, Clip
+from galeria.models import Media, Clip
 
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,4 +13,15 @@ class MediaSerializer(serializers.ModelSerializer):
             'category',
             'type',
             'url',
+        )
+
+class ClipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Clip
+        fields = (
+            'name',
+            'start',
+            'end',
+            'user',
+            'media',
         )
