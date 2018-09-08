@@ -7,7 +7,8 @@ import requests
 # Create your views here.
 def index(request):
 
-    response = requests.get('http://localhost:8000/api/media.json/')
+    port = request.META['SERVER_PORT']
+    response = requests.get('http://localhost:'+port+'/api/media.json/')
     media = response.json()
     categories = Category.objects.all()
 
@@ -50,9 +51,10 @@ def galerySearch(request):
 
 def detail(request, id):
 
-    response = requests.get('http://localhost:8000/api/media/'+str(id)+'.json/')
+    port = request.META['SERVER_PORT']
+    response = requests.get('http://localhost:'+port+'/api/media/'+str(id)+'.json/')
     media = response.json()
-    response = requests.get('http://localhost:8000/api/media/'+str(id)+'/clips.json/')
+    response = requests.get('http://localhost:'+port+'/api/media/'+str(id)+'/clips.json/')
     clips = response.json()
 
     form = ClipForm(request.POST or None)
