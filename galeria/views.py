@@ -2,11 +2,13 @@ from django.shortcuts import render
 
 from .models import Media, Clip, Category
 from .forms import ClipForm
+import requests
 
 # Create your views here.
 def index(request):
 
-    media = Media.objects.all()[:12]
+    response = requests.get('http://localhost:8000/api/media.json/')
+    media = response.json()
     categories = Category.objects.all()
 
     context = {
@@ -47,8 +49,11 @@ def galerySearch(request):
     return render(request, 'galeria/mediaList.html', context)
 
 def detail(request, id):
-    media = Media.objects.get(id=id)
-    clips = Clip.objects.filter(media=media.id)
+
+    response = requests.get('http://localhost:8000/api/media/'+str(id)+'.json/')
+    media = response.json()
+    response = requests.get('http://localhost:8000/api/media/'+str(id)+'/clips.json/')
+    clips = response.json()
 
     form = ClipForm(request.POST or None)
     if form.is_valid():

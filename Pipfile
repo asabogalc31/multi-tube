@@ -10,6 +10,7 @@ gunicorn = "*"
 django-heroku = "*"
 pillow = "*"
 djangorestframework = "*"
+requests = "*"
 
 [dev-packages]
 
