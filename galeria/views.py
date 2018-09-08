@@ -59,7 +59,8 @@ def detail(request, id):
 
     form = ClipForm(request.POST or None)
     if form.is_valid():
-        Clip.objects.create(**form.cleaned_data, media=media, user=request.user)
+        clip_media = Media.objects.get(id=id)
+        Clip.objects.create(**form.cleaned_data, media=clip_media, user=request.user)
         form = ClipForm()
 
 
