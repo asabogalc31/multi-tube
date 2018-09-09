@@ -1,13 +1,20 @@
 {% extends 'root.html' %}
 {% load static %}
 {% block content %}
+<script type="text/javascript" src="https://w.soundcloud.com/player/api.js"></script>
 <div class="galeryTitle PageTitle">
   <h1>{{item.title}}</h1>
 </div>
 <div class="MediaDetail PageBorder">
   <div class="MediaItem">
+      {% if item and item.type_display == 'Video' %}
   <iframe id="existing-iframe-example" width="100%" height="100%" frameborder="0" allowfullscreen="True" src="{{item.url}}?enablejsapi=1">
     </iframe>
+      {% else %}
+      <iframe class="scPlayer" width="100%" height="100%" src="{{item.url}}"
+        scrolling="no" frameborder="no"
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      {% endif %}
     <div class="itemDetail">
       <div><b>Author:</b> {{item.author}}</div>
       <div><b>Date:</b> {{item.date}}</div>
@@ -26,9 +33,15 @@
           <h4>{{clip.name}}</h4>
           <p>Created by {{clip.username}}</p>
         </div>
+         {% if item.type_display == 'Video' %}
         <button  id="play" type="button" onclick="submitLoadVideoByURL('{{ item.url }}', {{ clip.start }}, {{ clip.end }})" allowfullscreen="True" class="PlayButton LinkButton">
           <img src="{% static 'img/play.svg' %}" alt="Play button for clip">
         </button>
+        {% else %}
+              <button type="button" onclick="playClip({{ clip.start }}, {{ clip.end }})" allowfullscreen="True" class="PlayButton LinkButton">
+          <img src="{% static 'img/play.svg' %}" alt="Play button for clip">
+        </button>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -89,5 +102,19 @@
       function stopVideo() {
         player.stopVideo();
       }
+
+        var iframe = document.querySelector('.scPlayer');
+        var widget = SC.Widget(iframe);
+        var clipTimer;
+        function playClip(startTime, endTime){
+            widget.play();
+            clearTimeout(clipTimer);
+            widget.seekTo(startTime*1000);
+            clipTimer = setTimeout(pauseAudio, (endTime-startTime)*1000);
+        }
+        function pauseAudio(){
+            widget.pause();
+        }
     </script>
+
 {% endblock %}
