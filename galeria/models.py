@@ -28,7 +28,6 @@ class Media(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     type = models.CharField(max_length=1, choices=MEDIA_TYPES)
     url = models.CharField(max_length=200)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title

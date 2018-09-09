@@ -64,13 +64,13 @@ def detail(request, id):
         Clip.objects.create(**form.cleaned_data, media=clip_media, user=request.user)
 
         gmail_user = 'multitube.grupo02@gmail.com'
-        to = [media.user.email]
-        title_video = media.title
+        to = [request.user.email]
+        title_video = clip_media.title
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.ehlo()
         server.starttls()
         server.login(gmail_user, "tubegrupo2")
-        body = "¡Hola, " + media.user.first_name + "! \n\n El video " + title_video +" que publicaste en mediatube le han agregado un clip puedes ir a verlo. \n\n ¡Saludos Media-Tube!"
+        body = "¡Hola, " + request.user.first_name + "! \n\n Al video " + title_video +" publicado en media-tube le has agregado un clip puedes ir a verlo. \n\n ¡Saludos Media-Tube!"
         m = text(body)
         m['Subject'] = '¡Clip adicionado!'
         m['From'] = gmail_user
