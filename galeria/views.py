@@ -1,5 +1,6 @@
+import smtplib
 from django.shortcuts import render
-
+from email.mime.text import MIMEText as text
 from .models import Media, Clip, Category
 from .forms import ClipForm
 
@@ -53,6 +54,20 @@ def detail(request, id):
     form = ClipForm(request.POST or None)
     if form.is_valid():
         Clip.objects.create(**form.cleaned_data, media=media, user=request.user)
+        gmail_user = 'multitube.grupo02@gmail.com'
+        to = [media.user.email]
+        title_video = media.title
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.ehlo()
+        server.starttls()
+        server.login(gmail_user, "tubegrupo2")
+        body = "¡Hola, " + media.user.first_name + "! \n\n El video " + title_video +" que publicaste en mediatube le han agregado un clip puedes ir a verlo. \n\n ¡Saludos Media-Tube!"
+        m = text(body)
+        m['Subject'] = '¡Clip adicionado!'
+        m['From'] = gmail_user
+        m['To'] = to[0]
+        server.sendmail(gmail_user, ", ".join(to), m.as_string())
+        server.close()
         form = ClipForm()
 
 

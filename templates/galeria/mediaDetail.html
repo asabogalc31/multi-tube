@@ -6,7 +6,7 @@
 </div>
 <div class="MediaDetail PageBorder">
   <div class="MediaItem">
-    <iframe autoplay=1 width="100%" height="100%" frameborder="0" allowfullscreen="True" src="{{item.url}}">
+  <iframe id="existing-iframe-example" width="100%" height="100%" frameborder="0" allowfullscreen="True" src="{{item.url}}?enablejsapi=1">
     </iframe>
     <div class="itemDetail">
       <div><b>Author:</b> {{item.author}}</div>
@@ -26,7 +26,7 @@
           <h4>{{clip.name}}</h4>
           <p>Created by {{clip.user.username}}</p>
         </div>
-        <button type="button" onclick="location.href = '{{ item.url }}?start={{ clip.start }}&end={{ clip.end    }}&autoplay=1'" allowfullscreen="True" class="PlayButton LinkButton">
+        <button  id="play" type="button" onclick="submitLoadVideoByURL('{{ item.url }}', {{ clip.start }}, {{ clip.end }})" allowfullscreen="True" class="PlayButton LinkButton">
           <img src="{% static 'img/play.svg' %}" alt="Play button for clip">
         </button>
       </div>
@@ -43,4 +43,51 @@
     {% endif %}
   </div>
 </div>
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('existing-iframe-example', {
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      function play(){
+        player.playVideo();
+      }
+
+      function submitLoadVideoByURL(url, start, end) {
+            player.loadVideoByUrl(
+            {
+                mediaContentUrl:url,
+                startSeconds:start,
+                endSeconds:end
+            });
+        }
+
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
 {% endblock %}
