@@ -39,10 +39,10 @@
         <div><b>City:</b> {{item.city}}</div>
         <div><b>Country:</b> {{item.country}}</div>
         <div><b>Category:</b> {{item.category}}</div>
-        <div><b>Type:</b> {{item.get_type_display}}</div>
+        <div><b>Type:</b> {{item.type_display}}</div>
       </div>
       <button type="button" name="seeClips"
-      onclick="location.href = '{{ item.get_absolute_url }}'">
+      onclick="location.href = '{{ item.detail_url }}'">
         <h3>Details</h3>
       </button>
     </div>

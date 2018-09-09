@@ -14,7 +14,7 @@
       <div><b>City:</b> {{item.city}}</div>
       <div><b>Country:</b> {{item.country}}</div>
       <div><b>Category:</b> {{item.category}}</div>
-      <div><b>Type:</b> {{item.get_type_display}}</div>
+      <div><b>Type:</b> {{item.type_display}}</div>
     </div>
   </div>
   <div class="MediaClips">
@@ -24,7 +24,7 @@
       <div class="Clip">
         <div class="clipTitle">
           <h4>{{clip.name}}</h4>
-          <p>Created by {{clip.user.username}}</p>
+          <p>Created by {{clip.username}}</p>
         </div>
         <button  id="play" type="button" onclick="submitLoadVideoByURL('{{ item.url }}', {{ clip.start }}, {{ clip.end }})" allowfullscreen="True" class="PlayButton LinkButton">
           <img src="{% static 'img/play.svg' %}" alt="Play button for clip">

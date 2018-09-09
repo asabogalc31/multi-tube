@@ -3,11 +3,14 @@ from django.shortcuts import render
 from email.mime.text import MIMEText as text
 from .models import Media, Clip, Category
 from .forms import ClipForm
+import requests
 
 # Create your views here.
 def index(request):
 
-    media = Media.objects.all()[:12]
+    port = request.META['SERVER_PORT']
+    response = requests.get('http://localhost:'+port+'/api/media.json/')
+    media = response.json()
     categories = Category.objects.all()
 
     context = {
@@ -48,12 +51,18 @@ def galerySearch(request):
     return render(request, 'galeria/mediaList.html', context)
 
 def detail(request, id):
-    media = Media.objects.get(id=id)
-    clips = Clip.objects.filter(media=media.id)
+
+    port = request.META['SERVER_PORT']
+    response = requests.get('http://localhost:'+port+'/api/media/'+str(id)+'.json/')
+    media = response.json()
+    response = requests.get('http://localhost:'+port+'/api/media/'+str(id)+'/clips.json/')
+    clips = response.json()
 
     form = ClipForm(request.POST or None)
     if form.is_valid():
-        Clip.objects.create(**form.cleaned_data, media=media, user=request.user)
+        clip_media = Media.objects.get(id=id)
+        Clip.objects.create(**form.cleaned_data, media=clip_media, user=request.user)
+
         gmail_user = 'multitube.grupo02@gmail.com'
         to = [media.user.email]
         title_video = media.title
@@ -69,7 +78,6 @@ def detail(request, id):
         server.sendmail(gmail_user, ", ".join(to), m.as_string())
         server.close()
         form = ClipForm()
-
 
     context = {
         'item': media,
